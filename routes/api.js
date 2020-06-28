@@ -10,7 +10,7 @@
 
 var expect = require('chai').expect;
 const { getThreads, putThreads, deleteThreads, postThreads } = require('../controllers/threads');
-const replies = require('../controllers/replies');
+const { getReplies, putReplies, deleteReplies, postReplies } = require('../controllers/replies');
 
 module.exports = function (app) {
   
@@ -21,9 +21,9 @@ module.exports = function (app) {
     .delete(deleteThreads);
     
   app.route('/api/replies/:board')
-    .get(replies)
-    .post(replies)
-    .put(replies)
-    .delete(replies);
+    .get(getReplies)
+    .post(postReplies)
+    .put(putReplies)
+    .delete(deleteReplies);
 
 };
