@@ -31,7 +31,7 @@ suite('Functional Tests', function() {
         .send(testData)
         .end(function(err, res) {
           assert.equal(res.status, 200, 'response status should be 200');
-          console.log(`res is ${JSON.stringify(res)}`);
+          // console.log(`res is ${JSON.stringify(res)}`); //Use Zombie to check that the redirect really did happen
           done();
         })
       })
