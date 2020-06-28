@@ -18,6 +18,9 @@ suite('Functional Tests', function() {
   suite('API ROUTING FOR /api/threads/:board', function() {
     
     suite('POST', function() {
+      test('POST a thread to a specific message board by passing form data text and deletepassword_ to /api/threads{board}', function(done) {
+        
+      })
       /*
       I can POST a thread to a specific message board by passing form data text and deletepassword_ to /api/threads/{board}.
       
