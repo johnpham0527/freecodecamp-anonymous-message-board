@@ -5,7 +5,8 @@ function getThreads(req, res, next) {
 }
 
 function postThreads(req, res, next) {
-    console.log(`POST threads...`)
+    console.log(`POST threads. req.params is ${JSON.stringify(req.params)} and req.body is ${JSON.stringify(req.body)}`);
+    return res.send(`Hello world`);
 }
 
 function putThreads(req, res, next) {
