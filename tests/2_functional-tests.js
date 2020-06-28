@@ -26,7 +26,7 @@ suite('Functional Tests', function() {
 
       test('POST a thread to a specific message board by passing form data text and deletepassword_ to /api/threads{board}', function(done) {
         chai.request(server)
-        .post(`/api/threads${testBoard}`)
+        .post(`/api/threads/${testBoard}`)
         .type('form')
         .send(testData)
         .end(function(err, res) {
