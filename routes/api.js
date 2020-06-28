@@ -9,6 +9,8 @@
 'use strict';
 
 var expect = require('chai').expect;
+const threads = require('../controllers/threads');
+const replies = require('../controllers/replies');
 
 module.exports = function (app) {
   
