@@ -4,7 +4,7 @@ function getThreads(req, res, next) {
     console.log(`GET threads...`)
 }
 
-function postThreads(req, res, next) {
+function postThreads(req, res) {
     const board = req.params.board;
     const { text, delete_password } = req.body;
     console.log(`POST threads. board is ${board}, text is ${text}, and delete_password is ${delete_password}`);
@@ -28,12 +28,12 @@ function postThreads(req, res, next) {
             if (err) {
                 console.log(`Error inserting new thread. Error is ${err}`);
             }
-            console.log(`New thread inserted. res is ${res}`);
+            console.log(`New thread inserted.`);
         })
     });
 
-
-    return res.send(`Hello world`);
+    return res.redirect(302, `/b/${board}/`)
+    //return res.send(`Hello world`);
     //Eventually, this will return a res redirect to /b/${req.params}
 }
 
