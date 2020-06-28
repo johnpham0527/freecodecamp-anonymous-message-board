@@ -46,11 +46,22 @@ suite('Functional Tests', function() {
     });
     
     suite('GET', function() {
-      /*
-      I can GET an array of the most recent 10 bumped threads on the board with only the most recent 3 replies each from /api/threads/{board}.
-      
-      The reported and deletepasswords_ fields will not be sent to the client.
-      */
+      test('GET an arry of the most recent 10 bumped threads on the board with only the the most recent 3 replies each from /api/threads{board}', function(done) {
+        const testBoard = 'general';
+
+        chai.request(server)
+        .get(`/api/threads/${testBoard}`)
+        .end(function(err, res) {
+          assert.equal(res.status, 200, 'response status should be 200');
+          done();
+        })
+
+      })
+        /*
+        I can GET an array of the most recent 10 bumped threads on the board with only the most recent 3 replies each from /api/threads/{board}.
+        
+        The reported and deletepasswords_ fields will not be sent to the client.
+        */
 
     });
     
