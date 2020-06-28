@@ -5,8 +5,13 @@ function getThreads(req, res, next) {
 }
 
 function postThreads(req, res, next) {
+    
     console.log(`POST threads. req.params is ${JSON.stringify(req.params)} and req.body is ${JSON.stringify(req.body)}`);
+    /*
+    To implement: database functions
+    */
     return res.send(`Hello world`);
+    //Eventually, this will return a res redirect to /b/${req.params}
 }
 
 function putThreads(req, res, next) {
