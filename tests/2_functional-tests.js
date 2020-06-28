@@ -31,6 +31,8 @@ suite('Functional Tests', function() {
         .send(testData)
         .end(function(err, res) {
           assert.equal(res.status, 200, 'response status should be 200');
+          //to implement: expect(res).to.redirectTo('/b/${testBoard}). That page will then GET the new thread
+
           done();
         })
       })
