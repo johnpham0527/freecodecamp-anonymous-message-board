@@ -14,8 +14,16 @@ const replies = require('../controllers/replies');
 
 module.exports = function (app) {
   
-  app.route('/api/threads/:board');
+  app.route('/api/threads/:board')
+    .get(threads)
+    .post(threads)
+    .put(threads)
+    .delete(threads);
     
-  app.route('/api/replies/:board');
+  app.route('/api/replies/:board')
+    .get(replies)
+    .post(replies)
+    .put(replies)
+    .delete(replies);
 
 };
