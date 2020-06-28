@@ -5,8 +5,9 @@ function getThreads(req, res, next) {
 }
 
 function postThreads(req, res, next) {
-    
-    console.log(`POST threads. req.params is ${JSON.stringify(req.params)} and req.body is ${JSON.stringify(req.body)}`);
+    const board = req.params.board;
+    const { text, delete_password } = req.body;
+    console.log(`POST threads. board is ${board}, text is ${text}, and delete_password is ${delete_password}`);
     /*
     To implement: database functions
     */
