@@ -16,7 +16,7 @@ module.exports = function (app) {
   
   app.route('/api/threads/:board')
     .get(getThreads)
-    .post(putThreads)
+    .post(postThreads)
     .put(putThreads)
     .delete(deleteThreads);
     
