@@ -9,12 +9,22 @@ function postThreads(req, res, next) {
     const { text, delete_password } = req.body;
     console.log(`POST threads. board is ${board}, text is ${text}, and delete_password is ${delete_password}`);
 
+    const now = Date.now();
+
+    const data = {
+        text: text,
+        createdon_: now,
+        bumpedon_: now,
+        reported: false,
+        deletepassword_: delete_password,
+        replies: []
+    }
 
     /*
     Saved will be at least _id, text, createdon_(date&time), bumpedon_(date&time, starts same as created_on), reported(boolean), deletepassword_, & replies(array).
     */
     getDb.then(function(db) {
-        
+        //db.collection('threads').insertOne()
     });
 
 
