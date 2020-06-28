@@ -19,13 +19,19 @@ suite('Functional Tests', function() {
     
     suite('POST', function() {
       const testBoard = 'b';
+      const testData = {
+        text: 'Test message',
+        delete_password: 'testpassword123!'
+      }
 
       test('POST a thread to a specific message board by passing form data text and deletepassword_ to /api/threads{board}', function(done) {
         chai.request(server)
         .post(`/api/threads${testBoard}`)
         .type('form')
-        .send({
-          
+        .send(testData)
+        .end(function(err, res) {
+          assert.equal(res.status, 200, 'response status should be 200');
+          done();
         })
       })
       /*
