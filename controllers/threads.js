@@ -9,7 +9,7 @@ function postThreads(req, res) {
     const { text, delete_password } = req.body;
     console.log(`POST threads. board is ${board}, text is ${text}, and delete_password is ${delete_password}`);
 
-    const now = Date.now();
+    const now = new Date();
 
     const data = {
         text: text,
