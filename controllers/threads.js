@@ -24,7 +24,12 @@ function postThreads(req, res, next) {
     Saved will be at least _id, text, createdon_(date&time), bumpedon_(date&time, starts same as created_on), reported(boolean), deletepassword_, & replies(array).
     */
     getDb.then(function(db) {
-        //db.collection('threads').insertOne()
+        db.collection('threads').insertOne(data, function(err, res) {
+            if (err) {
+                console.log(`Error inserting new thread. Error is ${err}`);
+            }
+            console.log(`New thread inserted. res is ${res}`);
+        })
     });
 
 
