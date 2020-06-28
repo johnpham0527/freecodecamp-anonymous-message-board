@@ -18,8 +18,15 @@ suite('Functional Tests', function() {
   suite('API ROUTING FOR /api/threads/:board', function() {
     
     suite('POST', function() {
+      const testBoard = 'b';
+
       test('POST a thread to a specific message board by passing form data text and deletepassword_ to /api/threads{board}', function(done) {
-        
+        chai.request(server)
+        .post(`/api/threads${testBoard}`)
+        .type('form')
+        .send({
+          
+        })
       })
       /*
       I can POST a thread to a specific message board by passing form data text and deletepassword_ to /api/threads/{board}.
