@@ -62,18 +62,7 @@ suite('Functional Tests', function() {
           assert.isAtMost(res.body[0].replies.length, 3, 'replies array length should be 3 elements at the most');
           done();
         })
-
       })
-        /*
-        I can GET an array of the most recent 10 bumped threads on the board with only the most recent 3 replies each from /api/threads/{board}.
-        The reported and deletepasswords_ fields will not be sent to the client.
-        text: text,
-        createdon_: now,
-        bumpedon_: now,
-        replies: []
-    }
-        */
-
     });
     
     suite('DELETE', function() {
