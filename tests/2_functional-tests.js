@@ -53,6 +53,7 @@ suite('Functional Tests', function() {
           assert.equal(res.status, 200, 'response status should be 200');
           assert.isArray(res.body, 'response body should be an array');
           assert.isAtMost(res.body.length, 10, 'response body length should be 10 elements (threads) long at most');
+          assert.isAtMost(res.body[0].replies.length, 3, 'replies array length should be 3 elements at the most');
           done();
         })
 
