@@ -55,6 +55,7 @@ suite('Functional Tests', function() {
           assert.isAtMost(res.body.length, 10, 'response body length should be 10 elements (threads) long at most');
           assert.isAtMost(res.body[0].replies.length, 3, 'replies array length should be 3 elements at the most');
           assert.notProperty(res.body[0], 'reported', 'reported should be send to the client');
+          assert.notProperty(res.body[0], 'deletepassword_', 'deletepassword_ should be send to the client');
           done();
         })
 
