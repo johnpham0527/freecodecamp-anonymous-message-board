@@ -56,6 +56,7 @@ suite('Functional Tests', function() {
           assert.isAtMost(res.body[0].replies.length, 3, 'replies array length should be 3 elements at the most');
           assert.notProperty(res.body[0], 'reported', 'reported should be send to the client');
           assert.notProperty(res.body[0], 'deletepassword_', 'deletepassword_ should be send to the client');
+          assert.property(res.body[0], 'text', 'text should be sent to the client');
           done();
         })
 
@@ -68,8 +69,6 @@ suite('Functional Tests', function() {
         text: text,
         createdon_: now,
         bumpedon_: now,
-        reported: false,
-        deletepassword_: delete_password,
         replies: []
     }
         */
