@@ -58,15 +58,14 @@ suite('Functional Tests', function() {
           assert.notProperty(res.body[0], 'deletepassword_', 'deletepassword_ should be send to the client');
           assert.property(res.body[0], 'text', 'text should be sent to the client');
           assert.property(res.body[0], 'createdon_', 'createdon_ should be sent to the client');
+          assert.property(res.body[0], 'bumpedon_', 'bumpedon_ should be a property send to the client');
           done();
         })
 
       })
         /*
         I can GET an array of the most recent 10 bumped threads on the board with only the most recent 3 replies each from /api/threads/{board}.
-        
         The reported and deletepasswords_ fields will not be sent to the client.
-
         text: text,
         createdon_: now,
         bumpedon_: now,
