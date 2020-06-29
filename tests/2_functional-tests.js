@@ -37,22 +37,22 @@ suite('Functional Tests', function() {
       })
       /*
       I can POST a thread to a specific message board by passing form data text and deletepassword_ to /api/threads/{board}.
-      
       (Recommend res.redirect to board page /b/{board}) 
-      
       Saved will be at least _id, text, createdon_(date&time), bumpedon_(date&time, starts same as created_on), reported(boolean), deletepassword_, & replies(array).
       */
 
     });
     
     suite('GET', function() {
-      test('GET an arry of the most recent 10 bumped threads on the board with only the the most recent 3 replies each from /api/threads{board}', function(done) {
+      test('GET an array of the most recent 10 bumped threads on the board with only the the most recent 3 replies each from /api/threads{board}', function(done) {
         const testBoard = 'general';
 
         chai.request(server)
         .get(`/api/threads/${testBoard}`)
         .end(function(err, res) {
           assert.equal(res.status, 200, 'response status should be 200');
+          assert.isArray(res.body, 'response body should be an array');
+          assert.isAtMost(res.body.length, 10, 'response body length should be 10 elements (threads) long at most');
           done();
         })
 
