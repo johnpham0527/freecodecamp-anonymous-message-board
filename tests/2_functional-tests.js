@@ -54,6 +54,7 @@ suite('Functional Tests', function() {
           assert.isArray(res.body, 'response body should be an array');
           assert.isAtMost(res.body.length, 10, 'response body length should be 10 elements (threads) long at most');
           assert.isAtMost(res.body[0].replies.length, 3, 'replies array length should be 3 elements at the most');
+          assert.notProperty(res.body[0], 'reported', 'reported should be send to the client');
           done();
         })
 
@@ -62,6 +63,14 @@ suite('Functional Tests', function() {
         I can GET an array of the most recent 10 bumped threads on the board with only the most recent 3 replies each from /api/threads/{board}.
         
         The reported and deletepasswords_ fields will not be sent to the client.
+
+        text: text,
+        createdon_: now,
+        bumpedon_: now,
+        reported: false,
+        deletepassword_: delete_password,
+        replies: []
+    }
         */
 
     });
