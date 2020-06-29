@@ -57,6 +57,7 @@ suite('Functional Tests', function() {
           assert.notProperty(res.body[0], 'reported', 'reported should be send to the client');
           assert.notProperty(res.body[0], 'deletepassword_', 'deletepassword_ should be send to the client');
           assert.property(res.body[0], 'text', 'text should be sent to the client');
+          assert.property(res.body[0], 'createdon_', 'createdon_ should be sent to the client');
           done();
         })
 
