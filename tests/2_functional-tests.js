@@ -31,6 +31,7 @@ suite('Functional Tests', function() {
         .send(testData)
         .end(function(err, res) {
           assert.equal(res.status, 200, 'response status should be 200'); //the page should redirect to /b/{board}, so it's not possible to check the database unless I do integration testing
+          //perhaps I can write an integration test that uses Zombie to that the redirect page contains the POSTED content. I'll need to implement GET first, though.
           done();
         })
       })
