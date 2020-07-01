@@ -53,8 +53,8 @@ suite('Functional Tests', function() {
           assert.equal(res.status, 200, 'response status should be 200');
           assert.isArray(res.body, 'response body should be an array');
           assert.isAtMost(res.body.length, 10, 'response body length should be 10 elements (threads) long at most');
-          assert.notProperty(res.body[0], 'reported', 'reported should be send to the client');
-          assert.notProperty(res.body[0], 'deletepassword_', 'deletepassword_ should be send to the client');
+          assert.notProperty(res.body[0], 'reported', 'reported should not be send to the client');
+          assert.notProperty(res.body[0], 'deletepassword_', 'deletepassword_ should not be send to the client');
           assert.property(res.body[0], 'text', 'text should be sent to the client');
           assert.property(res.body[0], 'createdon_', 'createdon_ should be sent to the client');
           assert.property(res.body[0], 'bumpedon_', 'bumpedon_ should be a property send to the client');
