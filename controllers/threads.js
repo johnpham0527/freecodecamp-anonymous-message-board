@@ -2,6 +2,17 @@ const getDb = require('../db');
 
 function getThreads(req, res, next) {
     console.log(`GET threads...`)
+
+    getDb.then(function(db) {
+        db.collection('threads').find({}, {limit: 10, sort: {datetime: -1}}, function (err, data) {
+            if (err) {
+                console.err(`Error finding threads: ${err}`);
+            }
+            console.log(`data is ${data}`);
+        })
+    })
+
+    return res.json(data);
 }
 
 function postThreads(req, res) {
