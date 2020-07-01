@@ -1,18 +1,25 @@
 const getDb = require('../db');
 
 function getThreads(req, res, next) {
-    console.log(`GET threads...`)
-
     getDb.then(function(db) {
-        db.collection('threads').find({}, {limit: 10, sort: {datetime: -1}}, function (err, data) {
-            if (err) {
-                console.err(`Error finding threads: ${err}`);
+        db.collection('threads').find({}, { 
+            //find the 10 most recently bumped threads
+            limit: 10, 
+            sort: { bumpedon_: -1 } ,
+            projection: { //do not display the password and reported status
+                deletepassword_: 0,
+                reported: 0,
+                replies: { $slice: -3 } //this assumes that the last three replies are the most recent
             }
-            console.log(`data is ${data}`);
-        })
+        }) 
+            .toArray(function (err, data) {
+                if (err) {
+                    console.err(`Error finding threads: ${err}`);
+                }
+                console.log(`data is ${data}`);
+                return res.json(data);
+            })
     })
-
-    return res.json(data);
 }
 
 function postThreads(req, res) {
