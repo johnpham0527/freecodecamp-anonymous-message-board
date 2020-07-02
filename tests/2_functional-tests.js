@@ -66,6 +66,9 @@ suite('Functional Tests', function() {
     });
     
     suite('DELETE', function() {
+      test('DELETE an entire thread, given a threadid_ and deletepassword_, passed to /api/threads', function(done) {
+        
+      })
       /*
       I can delete a thread completely if I send a DELETE request to /api/threads/{board} and pass along the threadid_ & deletepassword_. (Text response will be 'incorrect password' or 'success')
       */
