@@ -98,7 +98,6 @@ suite('Functional Tests', function() {
               assert.equal(res.status, 200, 'response status should be 200');
               assert.equal(res.body, 'incorrect password', 'The response text should be incorrect password');
               done();
-              db.close();
             })
           })
         })
@@ -124,7 +123,6 @@ suite('Functional Tests', function() {
         getDb.then(function(db) {
           
 
-          db.close();
         })
       })
 

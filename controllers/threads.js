@@ -17,7 +17,6 @@ function getThreads(req, res, next) {
                     console.err(`Error finding threads: ${err}`);
                 }
                 console.log(`data is ${data}`);
-                db.close();
                 return res.json(data);
             })
     })
@@ -49,7 +48,6 @@ function postThreads(req, res) {
                 console.log(`Error inserting new thread. Error is ${err}`);
             }
             console.log(`New thread inserted.`);
-            db.close();
         })
     });
 
