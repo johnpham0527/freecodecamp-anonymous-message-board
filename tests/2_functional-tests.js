@@ -10,21 +10,21 @@ var chaiHttp = require('chai-http');
 var chai = require('chai');
 var assert = chai.assert;
 var server = require('../server');
-const getDb = require('../db'); //import db in order to set up and test DELETE
+const Browser = require('zombie');
 
 chai.use(chaiHttp);
 
 suite('Functional Tests', function() {
 
   suite('API ROUTING FOR /api/threads/:board', function() {
+
+    const testBoard = 'general';
+    const testData = {
+      text: 'Test message',
+      delete_password: 'testpassword123!'
+    }
     
     suite('POST', function() {
-      const testBoard = 'general';
-      const testData = {
-        text: 'Test message',
-        delete_password: 'testpassword123!'
-      }
-
       test('POST a thread to a specific message board by passing form data text and deletepassword_ to /api/threads{board}', function(done) {
         chai.request(server)
         .post(`/api/threads/${testBoard}`)
@@ -68,6 +68,7 @@ suite('Functional Tests', function() {
     
     suite('DELETE', function() {
       test('DELETE an entire thread, given a threadid_ and deletepassword_, passed to /api/threads', function(done) {
+
 
       })
       /*
