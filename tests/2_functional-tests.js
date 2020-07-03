@@ -37,9 +37,13 @@ suite('Functional Tests', function() {
     }
     
     suite('POST', function() {
+      /*
+      I can POST a thread to a specific message board by passing form data text and deletepassword_ to /api/threads/{board}.
+      (Recommend res.redirect to board page /b/{board}) 
+      Saved will be at least _id, text, createdon_(date&time), bumpedon_(date&time, starts same as created_on), reported(boolean), deletepassword_, & replies(array).
+      */
+
       test('POST a thread to a specific message board by passing form data text and deletepassword_ to /api/threads{board}', function(done) {
-
-
         chai.request(server)
         .post(`/api/threads/${testBoard}`)
         .type('form')
@@ -50,12 +54,6 @@ suite('Functional Tests', function() {
           done();
         })
       })
-      /*
-      I can POST a thread to a specific message board by passing form data text and deletepassword_ to /api/threads/{board}.
-      (Recommend res.redirect to board page /b/{board}) 
-      Saved will be at least _id, text, createdon_(date&time), bumpedon_(date&time, starts same as created_on), reported(boolean), deletepassword_, & replies(array).
-      */
-
     });
     
     suite('GET', function() {
@@ -112,7 +110,6 @@ suite('Functional Tests', function() {
           done();
         })
       })
-
     });
     
     suite('PUT', function() {
@@ -136,7 +133,6 @@ suite('Functional Tests', function() {
           })
         })
       })
-
     });
     
 
