@@ -19,18 +19,31 @@ suite('Functional Tests', function() {
   suite('API ROUTING FOR /api/threads/:board', function() {
 
     const testBoard = 'general';
+    const now = new Date();
+    const deletePassword = 'delete123!';
+
+    const testData1 = {
+      text: 'Test message',
+      delete_password: 'testpassword123!'
+    }
+
+    const testData2 = {
+      text: 'Test text',
+      createdon_: now,
+      bumpedon_: now,
+      reported: false,
+      deletepassword_: deletePassword,
+      replies: []
+    }
     
     suite('POST', function() {
       test('POST a thread to a specific message board by passing form data text and deletepassword_ to /api/threads{board}', function(done) {
-        const testData = {
-          text: 'Test message',
-          delete_password: 'testpassword123!'
-        }
+
 
         chai.request(server)
         .post(`/api/threads/${testBoard}`)
         .type('form')
-        .send(testData)
+        .send(testData1)
         .end(function(err, res) {
           assert.equal(res.status, 200, 'response status should be 200'); //the page should redirect to /b/{board}, so it's not possible to check the database unless I do integration testing
           //perhaps I can write an integration test that uses Zombie to that the redirect page contains the POSTED content. I'll need to implement GET first, though.
@@ -69,22 +82,11 @@ suite('Functional Tests', function() {
     
     suite('DELETE', function() {
     /* I can delete a thread completely if I send a DELETE request to /api/threads/{board} and pass along the threadid_ & deletepassword_. (Text response will be 'incorrect password' or 'success') */
-      const now = new Date();
-      const deletePassword = 'delete123!';
       let id;
-
-      const testData = {
-        text: 'Test text',
-        createdon_: now,
-        bumpedon_: now,
-        reported: false,
-        deletepassword_: deletePassword,
-        replies: []
-      }
 
       test('Incorrect password given when attempting to DELETE a thread', function(done) {
         getDb.then(function(db) {
-          db.collection(testBoard).insertOne(testData, function(err, res) {
+          db.collection(testBoard).insertOne(testData2, function(err, res) {
             if (err) {
               console.log(`Error inserting document: ${err}`);
             }
