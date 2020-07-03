@@ -140,6 +140,12 @@ suite('Functional Tests', function() {
   suite('API ROUTING FOR /api/replies/:board', function() {
     
     suite('POST', function() {
+      let id;
+
+      test('POST a reply to a thread on a specific board, passing form data text, deletepassword_ and threadid_, to /api/replies/{board}. The bumped_on date is updated to the comments date', function(done) {
+
+      });
+
       /*
        I can POST a reply to a thread on a specific board by passing form data text, deletepassword_, & threadid_ to /api/replies/{board} and it will also update the bumped_on date to the comments date.
        
