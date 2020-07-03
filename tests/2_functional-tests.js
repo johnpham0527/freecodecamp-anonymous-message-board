@@ -90,7 +90,12 @@ suite('Functional Tests', function() {
             id = res.insertedId;
 
             chai.request(server)
-            .delete(`/api/threads/${testBoard}?`)
+            .delete(`/api/threads/${testBoard}?threadid_=${id}&deletepassword_=${deletePassword}`)
+            .end(function(err, res) {
+              assert.equal(res.status, 200, 'response status should be 200');
+              assert.equal(res.body, 'success', 'The response text should be success');
+              done();
+            })
           })
         })
       })
