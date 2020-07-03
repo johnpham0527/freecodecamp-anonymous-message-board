@@ -19,13 +19,14 @@ suite('Functional Tests', function() {
   suite('API ROUTING FOR /api/threads/:board', function() {
 
     const testBoard = 'general';
-    const testData = {
-      text: 'Test message',
-      delete_password: 'testpassword123!'
-    }
     
     suite('POST', function() {
       test('POST a thread to a specific message board by passing form data text and deletepassword_ to /api/threads{board}', function(done) {
+        const testData = {
+          text: 'Test message',
+          delete_password: 'testpassword123!'
+        }
+
         chai.request(server)
         .post(`/api/threads/${testBoard}`)
         .type('form')
@@ -68,9 +69,29 @@ suite('Functional Tests', function() {
     
     suite('DELETE', function() {
       test('DELETE an entire thread, given a threadid_ and deletepassword_, passed to /api/threads', function(done) {
+        const now = new Date();
+        const deletePassword = 'delete123!';
+        let id;
+
+        const testData = {
+          text: 'Test text',
+          createdon_: now,
+          bumpedon_: now,
+          reported: false,
+          deletepassword_: deletePassword,
+          replies: []
+        }
 
         getDb.then(function(db) {
-          
+          db.collection(testBoard).insertOne(testData, function(err, res) {
+            if (err) {
+              console.log(`Error inserting document: ${err}`);
+            }
+            id = res.insertedId;
+
+            chai.request(server)
+            .delete(`/api/threads/${testBoard}?`)
+          })
         })
       })
       /*
