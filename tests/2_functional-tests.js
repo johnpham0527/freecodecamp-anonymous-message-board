@@ -10,7 +10,7 @@ var chaiHttp = require('chai-http');
 var chai = require('chai');
 var assert = chai.assert;
 var server = require('../server');
-const Browser = require('zombie');
+const getDb = require('../db'); //import db in order to set up and test DELETE
 
 chai.use(chaiHttp);
 
@@ -69,7 +69,9 @@ suite('Functional Tests', function() {
     suite('DELETE', function() {
       test('DELETE an entire thread, given a threadid_ and deletepassword_, passed to /api/threads', function(done) {
 
-
+        getDb.then(function(db) {
+          
+        })
       })
       /*
       I can delete a thread completely if I send a DELETE request to /api/threads/{board} and pass along the threadid_ & deletepassword_. (Text response will be 'incorrect password' or 'success')
