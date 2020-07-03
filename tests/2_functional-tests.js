@@ -68,20 +68,21 @@ suite('Functional Tests', function() {
     });
     
     suite('DELETE', function() {
-      test('DELETE an entire thread, given a threadid_ and deletepassword_, passed to /api/threads', function(done) {
-        const now = new Date();
-        const deletePassword = 'delete123!';
-        let id;
+    /* I can delete a thread completely if I send a DELETE request to /api/threads/{board} and pass along the threadid_ & deletepassword_. (Text response will be 'incorrect password' or 'success') */
+      const now = new Date();
+      const deletePassword = 'delete123!';
+      let id;
 
-        const testData = {
-          text: 'Test text',
-          createdon_: now,
-          bumpedon_: now,
-          reported: false,
-          deletepassword_: deletePassword,
-          replies: []
-        }
+      const testData = {
+        text: 'Test text',
+        createdon_: now,
+        bumpedon_: now,
+        reported: false,
+        deletepassword_: deletePassword,
+        replies: []
+      }
 
+      test('Incorrect password given when attempting to DELETE a thread', function(done) {
         getDb.then(function(db) {
           db.collection(testBoard).insertOne(testData, function(err, res) {
             if (err) {
@@ -90,18 +91,25 @@ suite('Functional Tests', function() {
             id = res.insertedId;
 
             chai.request(server)
-            .delete(`/api/threads/${testBoard}?threadid_=${id}&deletepassword_=${deletePassword}`)
+            .delete(`/api/threads/${testBoard}?threadid_=${id}&deletepassword_=wrongpassword`)
             .end(function(err, res) {
               assert.equal(res.status, 200, 'response status should be 200');
-              assert.equal(res.body, 'success', 'The response text should be success');
+              assert.equal(res.body, 'incorrect password', 'The response text should be incorrect password');
               done();
             })
           })
         })
       })
-      /*
-      I can delete a thread completely if I send a DELETE request to /api/threads/{board} and pass along the threadid_ & deletepassword_. (Text response will be 'incorrect password' or 'success')
-      */
+
+      test('DELETE an entire thread, given a threadid_ and deletepassword_, passed to /api/threads', function(done) {
+        chai.request(server)
+        .delete(`/api/threads/${testBoard}?threadid_=${id}&deletepassword_=${deletePassword}`)
+        .end(function(err, res) {
+          assert.equal(res.status, 200, 'response status should be 200');
+          assert.equal(res.body, 'success', 'The response text should be success');
+          done();
+        })
+      })
 
     });
     
