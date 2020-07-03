@@ -15,26 +15,25 @@ const getDb = require('../db'); //import db in order to set up and test DELETE
 chai.use(chaiHttp);
 
 suite('Functional Tests', function() {
+  const testBoard = 'general';
+  const now = new Date();
+  const deletePassword = 'delete123!';
+
+  const testData1 = {
+    text: 'Test message',
+    delete_password: 'testpassword123!'
+  }
+
+  const testData2 = {
+    text: 'Test text',
+    createdon_: now,
+    bumpedon_: now,
+    reported: false,
+    deletepassword_: deletePassword,
+    replies: []
+  }
 
   suite('API ROUTING FOR /api/threads/:board', function() {
-
-    const testBoard = 'general';
-    const now = new Date();
-    const deletePassword = 'delete123!';
-
-    const testData1 = {
-      text: 'Test message',
-      delete_password: 'testpassword123!'
-    }
-
-    const testData2 = {
-      text: 'Test text',
-      createdon_: now,
-      bumpedon_: now,
-      reported: false,
-      deletepassword_: deletePassword,
-      replies: []
-    }
     
     suite('POST', function() {
       /*
