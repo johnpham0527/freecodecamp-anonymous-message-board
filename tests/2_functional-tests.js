@@ -121,8 +121,19 @@ suite('Functional Tests', function() {
 
       test('PUT report status to true, given a threadid_, passed to /api/threads/{board}', function(done) {
         getDb.then(function(db) {
-          
+          db.collection(testBoard).insertOne(testData2, function(err, res) {
+            if (err) {
+              console.log(`Error inserting document: ${err}`);
+            }
+            id = res.insertedId;
 
+            chai.request(server)
+            .put(`/api/threads/${testBoard}?threadid_=${id}`)
+            .end(function(err, res) {
+              assert.equal(res.status, 200, 'response status should be 200');
+              assert.equal(res.body, 'success', 'The response text should be success');
+            })
+          })
         })
       })
 
