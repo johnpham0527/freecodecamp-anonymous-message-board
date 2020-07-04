@@ -62,10 +62,25 @@ function putThreads(req, res, next) {
 
 function deleteThreads(req, res, next) {
     /* I can delete a thread completely if I send a DELETE request to /api/threads/{board} and pass along the threadid_ & deletepassword_. (Text response will be 'incorrect password' or 'success') */
-    console.log(`DELETE threads... threadis_ is ${req.query.threadid_} and deletepassword_ is ${req.query.deletepassword_}`);
+
+    const board = req.params.board;
+    const threadId = req.query.threadid_;
+    const password = req.query.deletepassword_;
+
+    console.log(`DELETE threads... board is ${board}, threadis_ is ${threadId} and deletepassword_ is ${req.query.deletepassword_}`);
 
     getDb.then(function(db) {
-        //db.collection()
+        db.collection(board).findOne({id: threadId}, function(err, res) {
+            if (err) {
+                console.log(`Error finding document: ${err}`);
+            }
+            
+            console.log(`password is ${res.deletepassword_}`);
+
+            if (res.deletepassword_ === password) {
+                //implement db.collection(board).delete...
+            }
+        })
     })
 }
 
