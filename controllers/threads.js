@@ -82,6 +82,8 @@ function deleteThreads(req, res, next) {
             }
         })
     })
+
+    /* To-do: implement bcrypt to hash passwords */
 }
 
 module.exports = { getThreads, postThreads, putThreads, deleteThreads };
