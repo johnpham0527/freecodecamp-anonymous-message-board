@@ -61,6 +61,7 @@ function putThreads(req, res, next) {
 }
 
 function deleteThreads(req, res, next) {
+    /* I can delete a thread completely if I send a DELETE request to /api/threads/{board} and pass along the threadid_ & deletepassword_. (Text response will be 'incorrect password' or 'success') */
     console.log(`DELETE threads...`)
 }
 

@@ -33,6 +33,15 @@ suite('Functional Tests', function() {
     replies: []
   }
 
+  const testData3 = {
+    text: 'Test text 3',
+    createdon_: now,
+    bumpedon_: now,
+    reported: false,
+    deletepassword_: deletePassword,
+    replies: []
+  }
+
   suite('API ROUTING FOR /api/threads/:board', function() {
     
     suite('POST', function() {
@@ -117,7 +126,7 @@ suite('Functional Tests', function() {
 
       test('PUT report status to true, given a threadid_, passed to /api/threads/{board}', function(done) {
         getDb.then(function(db) {
-          db.collection(testBoard).insertOne(testData2, function(err, res) {
+          db.collection(testBoard).insertOne(testData3, function(err, res) {
             if (err) {
               console.log(`Error inserting document: ${err}`);
             }
