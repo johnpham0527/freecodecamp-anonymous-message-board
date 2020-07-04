@@ -65,7 +65,9 @@ function deleteThreads(req, res, next) {
     /* I can delete a thread completely if I send a DELETE request to /api/threads/{board} and pass along the threadid_ & deletepassword_. (Text response will be 'incorrect password' or 'success') */
     console.log(`DELETE threads... threadis_ is ${req.query.threadid_} and deletepassword_ is ${req.query.deletepassword_}`);
 
-    
+    getDb.then(function(db) {
+        //db.collection()
+    })
 }
 
 module.exports = { getThreads, postThreads, putThreads, deleteThreads };
