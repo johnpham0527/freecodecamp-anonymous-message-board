@@ -54,6 +54,7 @@ function postThreads(req, res) {
     return res.redirect(302, `/b/${board}/`)
     //return res.send(`Hello world`);
     //Eventually, this will return a res redirect to /b/${req.params}
+    
 }
 
 function putThreads(req, res, next) {
@@ -62,7 +63,9 @@ function putThreads(req, res, next) {
 
 function deleteThreads(req, res, next) {
     /* I can delete a thread completely if I send a DELETE request to /api/threads/{board} and pass along the threadid_ & deletepassword_. (Text response will be 'incorrect password' or 'success') */
-    console.log(`DELETE threads...`)
+    console.log(`DELETE threads... threadis_ is ${req.query.threadid_} and deletepassword_ is ${req.query.deletepassword_}`);
+
+    
 }
 
 module.exports = { getThreads, postThreads, putThreads, deleteThreads };
