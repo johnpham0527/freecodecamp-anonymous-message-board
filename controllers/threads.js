@@ -1,8 +1,13 @@
 const getDb = require('../db');
 
 function getThreads(req, res, next) {
+    const board = req.params.board;
+    
+    console.log(`req.params.board is ${board}`);
+
+
     getDb.then(function(db) {
-        db.collection('threads').find({}, { 
+        db.collection(req.params.board).find({}, { 
             //find the 10 most recently bumped threads
             limit: 10, 
             sort: { bumpedon_: -1 } ,
@@ -16,7 +21,6 @@ function getThreads(req, res, next) {
                 if (err) {
                     console.err(`Error finding threads: ${err}`);
                 }
-                console.log(`data is ${data}`);
                 return res.json(data);
             })
     })
