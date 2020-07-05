@@ -147,9 +147,12 @@ suite('Functional Tests', function() {
   });
   
   suite('API ROUTING FOR /api/replies/:board', function() {
-    
+    let id; //use this id for POST, GET, PUT, and DELERE
+    const testData = {
+    };
+
     suite('POST', function() {
-      let id;
+      
 
       test('POST a reply to a thread on a specific board, passing form data text, deletepassword_ and threadid_, to /api/replies/{board}. The bumped_on date is updated to the comments date', function(done) {
 
