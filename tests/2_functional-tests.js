@@ -168,6 +168,9 @@ suite('Functional Tests', function() {
     });
     
     suite('GET', function() {
+      test('GET an entire thread with all replies from /api/replies/{board}?thread_id={thread_id}. Hidden are deletepassword_ and reported.', function(done) {
+        //done();
+      })
       /*
       I can GET an entire thread with all its replies from /api/replies/{board}?thread_id={thread_id}. Also hiding the same fields the client should be see.
       */
