@@ -177,6 +177,8 @@ suite('Functional Tests', function() {
     });
     
     suite('PUT', function() {
+      test('', function(done) {
+     }) 
       /*
       I can report a reply and change its reported value to true by sending a PUT request to /api/replies/{board} and pass along the threadid_ & replyid_. (Text response will be 'success')
       */
