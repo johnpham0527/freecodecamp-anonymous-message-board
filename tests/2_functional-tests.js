@@ -42,6 +42,15 @@ suite('Functional Tests', function() {
     replies: []
   }
 
+  const testData4 = {
+    text: 'Test text 4',
+    createdon_: now,
+    bumpedon_: now,
+    reported: false,
+    deletepassword_: deletePassword,
+    replies: []
+  }
+
   suite('API ROUTING FOR /api/threads/:board', function() {
     
     suite('POST', function() {
@@ -142,17 +151,34 @@ suite('Functional Tests', function() {
         })
       })
     });
-    
-
   });
   
   suite('API ROUTING FOR /api/replies/:board', function() {
-    let id; //use this id for POST, GET, PUT, and DELERE
-    const testData = {
+    let id; //use this id for POST, GET, PUT, and DELETE
+
+    const testComment = {
+      text: 'Test comment',
+      deletepassword_: 'Test password',
+      threadid_: ''
     };
 
     suite('POST', function() {  
-      test('POST a reply to a thread on a specific board, passing form data text, deletepassword_ and threadid_, to /api/replies/{board}. The bumped_on date is updated to the comments date', function(done) {
+      test(`POST a reply to a thread on a specific board, passing form data text, deletepassword_ and threadid_, to /api/replies/{board}. The bumped_on date is updated to the comment's date`, function(done) {
+
+        getDb.then(function(db) {
+          db.collection.testBoard.insertOne(testData4, function(err, res) {
+            if (err) {
+              console.log(`Error inserting document: ${err}`);
+            }
+            testComment.threadid_ = res.insertedId;
+
+            chai.request(server)
+            .post(`/api/replies/${testBoard}`)
+            .end(function(err, res) {
+              assert.equal(res.status, 200, 'response status should be 200'); //the page should redirect to /b/{board}/{thread_id}, so it's not possible to check the database unless I do integration testing
+            })
+          })
+        })
         //done();
       });
 
@@ -187,7 +213,7 @@ suite('Functional Tests', function() {
     
     suite('DELETE', function() {
 
-      
+
       /*
       I can delete a post(just changing the text to '[deleted]' instead of removing completely like a thread) if I send a DELETE request to /api/replies/{board} and pass along the threadid_, replyid_, & deletepassword_. (Text response will be 'incorrect password' or 'success')
       */
