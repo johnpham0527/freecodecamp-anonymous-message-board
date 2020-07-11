@@ -151,11 +151,9 @@ suite('Functional Tests', function() {
     const testData = {
     };
 
-    suite('POST', function() {
-      
-
+    suite('POST', function() {  
       test('POST a reply to a thread on a specific board, passing form data text, deletepassword_ and threadid_, to /api/replies/{board}. The bumped_on date is updated to the comments date', function(done) {
-
+        //done();
       });
 
       /*
@@ -169,6 +167,7 @@ suite('Functional Tests', function() {
     
     suite('GET', function() {
       test('GET an entire thread with all replies from /api/replies/{board}?thread_id={thread_id}. Hidden are deletepassword_ and reported.', function(done) {
+        
         //done();
       })
       /*
@@ -177,7 +176,9 @@ suite('Functional Tests', function() {
     });
     
     suite('PUT', function() {
-      test('', function(done) {
+      test(`PUT to change a comment's reported reply to true to /api/replies{board}, passing along threadid_ & replyid_. Response is 'success'`, function(done) {
+        
+        //done();
      }) 
       /*
       I can report a reply and change its reported value to true by sending a PUT request to /api/replies/{board} and pass along the threadid_ & replyid_. (Text response will be 'success')
@@ -185,6 +186,8 @@ suite('Functional Tests', function() {
     });
     
     suite('DELETE', function() {
+
+      
       /*
       I can delete a post(just changing the text to '[deleted]' instead of removing completely like a thread) if I send a DELETE request to /api/replies/{board} and pass along the threadid_, replyid_, & deletepassword_. (Text response will be 'incorrect password' or 'success')
       */
