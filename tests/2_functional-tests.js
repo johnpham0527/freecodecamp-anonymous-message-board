@@ -166,7 +166,7 @@ suite('Functional Tests', function() {
       test(`POST a reply to a thread on a specific board, passing form data text, deletepassword_ and threadid_, to /api/replies/{board}. The bumped_on date is updated to the comment's date`, function(done) {
 
         getDb.then(function(db) {
-          db.collection.testBoard.insertOne(testData4, function(err, res) {
+          db.collection(testBoard).insertOne(testData4, function(err, res) {
             if (err) {
               console.log(`Error inserting document: ${err}`);
             }
