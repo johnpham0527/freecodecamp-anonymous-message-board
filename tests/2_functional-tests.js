@@ -210,7 +210,9 @@ suite('Functional Tests', function() {
     });
     
     suite('DELETE', function() {
-
+      test('DELETE by changing text to "[deleted]", passing along threadid_, replyid_, and deletepassword_ to /api/replies/{board}. Response is "incorrect password" or "success", function(done) {
+        //done();
+      }) 
 
       /*
       I can delete a post(just changing the text to '[deleted]' instead of removing completely like a thread) if I send a DELETE request to /api/replies/{board} and pass along the threadid_, replyid_, & deletepassword_. (Text response will be 'incorrect password' or 'success')
