@@ -79,6 +79,15 @@ function deleteThreads(req, res, next) {
 
             if (res.deletepassword_ === password) {
                 //implement db.collection(board).delete...
+                /*
+                db.collection(board).deleteOne({id: threadId}, function(err, res) {
+                    if (err) {
+                        console.log(`Error finding document: ${err}`);
+                    }
+
+                    res.send('success');
+                })
+                */
             }
         })
     })
