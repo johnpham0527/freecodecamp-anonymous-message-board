@@ -70,24 +70,26 @@ function deleteThreads(req, res, next) {
     console.log(`DELETE threads... board is ${board}, threadis_ is ${threadId} and deletepassword_ is ${req.query.deletepassword_}`);
 
     getDb.then(function(db) {
-        db.collection(board).findOne({id: threadId}, function(err, res) {
+        console.log(`Made it here...`)
+        db.collection(board).findOne({id: threadId}, function(err, result) {
             if (err) {
                 console.log(`Error finding document: ${err}`);
             }
             
-            console.log(`password is ${res.deletepassword_}`);
+            console.log(`password is ${result.deletepassword_}`);
 
-            if (res.deletepassword_ === password) {
+            if (result.deletepassword_ === password) {
                 //implement db.collection(board).delete...
-                /*
-                db.collection(board).deleteOne({id: threadId}, function(err, res) {
+                db.collection(board).deleteOne({id: threadId}, function(err, result) {
                     if (err) {
                         console.log(`Error finding document: ${err}`);
                     }
-
+                    console.log(`Deleted document: ${result}`);
                     res.send('success');
                 })
-                */
+            }
+            else { // handle incorrect password
+                res.send('incorrect password');
             }
         })
     })
