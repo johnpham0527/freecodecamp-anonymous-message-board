@@ -15,6 +15,11 @@ function postReplies(req, res, next) {
        (Recommend res.redirect to thread page /b/{board}/{thread_id})
        In the thread's replies array will be saved _id, text, createdon_, deletepassword_, & reported.
     */
+/*
+Find thread
+Push new data into array: password (encrypted), text data, created on, reported
+res.redirect to board and thread page
+/*
 }
 
 function deleteReplies(req, res, next) {
