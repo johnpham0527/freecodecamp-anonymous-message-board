@@ -19,11 +19,16 @@ function postReplies(req, res, next) {
 Find thread
 Push new data into array: password (encrypted), text data, created on, reported
 res.redirect to board and thread page
-/*
+*/
 }
 
 function deleteReplies(req, res, next) {
     console.log(`DELETE replies...`)
+/*
+Find thread
+Edit thread to modify the text data 
+What else? 
+*/
 }
 
 module.exports = { getReplies, putReplies, postReplies, deleteReplies };
