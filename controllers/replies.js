@@ -6,6 +6,10 @@ function getReplies(req, res, next) {
 
 function putReplies(req, res, next) {
     console.log(`PUT replies...`)
+/*
+Find a thread... 
+*/
+
 }
 
 function postReplies(req, res, next) {
