@@ -2,6 +2,9 @@ const getDb = require('../db');
 
 function getReplies(req, res, next) {
     console.log(`Get replies...`)
+/*
+Find a thread... 
+*/
 }
 
 function putReplies(req, res, next) {
