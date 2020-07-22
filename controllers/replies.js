@@ -5,6 +5,11 @@ function getReplies(req, res, next) {
 /*
 Find a thread... 
 */
+/*
+I can GET an entire thread with all its 
+replies from /api/replies/{board}?thread_id={thread_id}. 
+Also hiding the same fields the client should be see.
+*/
 }
 
 function putReplies(req, res, next) {
