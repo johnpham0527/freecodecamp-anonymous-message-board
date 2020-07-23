@@ -192,7 +192,15 @@ suite('Functional Tests', function() {
     suite('GET', function() {
       test('GET an entire thread with all replies from /api/replies/{board}?thread_id={thread_id}. Hidden are deletepassword_ and reported.', function(done) {
         
-        //done();
+        chai.request(server)
+        .get(`/api/replies/${testBoard}/${testComment.threadid_}`)
+        .end(function(err, res) {
+          assert.equal(res.status, 200, 'response status should be 200');
+          assert.property(res.body[0], 'text', 'One of the replies should have a text property');
+          assert.property(res.body[0], '_id', 'The reply should have its own id');
+          assert.property(res.body[0], 'createdon_', 'The reply should have the createdon_ date property');
+        })
+        done();
       })
       /*
       I can GET an entire thread with all its replies from /api/replies/{board}?thread_id={thread_id}. Also hiding the same fields the client should be see.
