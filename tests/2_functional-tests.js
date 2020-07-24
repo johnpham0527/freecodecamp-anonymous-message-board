@@ -208,8 +208,9 @@ suite('Functional Tests', function() {
     });
     
     suite('PUT', function() {
-      test(`PUT to change a comment's reported reply to true to /api/replies{board}, passing along threadid_ & replyid_. Response is 'success'`, function(done) {
-        
+      test(`PUT to change a comment's reported reply to true to /api/replies/{board}, passing along threadid_ & replyid_. Response is 'success'`, function(done) {
+        chai.request(server)
+        //.put(`/api/replies/${testBoard}?threadid_=${testComment.threadId_}`)
         //done();
      }) 
       /*
