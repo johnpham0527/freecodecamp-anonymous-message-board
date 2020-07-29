@@ -61,7 +61,7 @@ function putThreads(req, res, next) {
     console.log(`PUT threads...`)
 }
 
-function deleteThreads(req, res, next) {
+function deleteThreads(req, res) {
     /* I can delete a thread completely if I send a DELETE request to /api/threads/{board} and pass along the threadid_ & deletepassword_. (Text response will be 'incorrect password' or 'success') */
 
     const board = req.params.board;
@@ -86,12 +86,12 @@ function deleteThreads(req, res, next) {
                         console.log(`Error finding document: ${err}`);
                     }
                     console.log(`Deleted document: ${result}`);
-                    res.send('success');
+                    return res.json('success');
                 })
             }
             else { // handle incorrect password
                 console.log(`Incorrect password. Database password ${result.deletepassword_} is not equal to given password ${deletepassword_}`);
-                res.send('incorrect password');
+                return res.json('incorrect password');
             }
         })
     })
