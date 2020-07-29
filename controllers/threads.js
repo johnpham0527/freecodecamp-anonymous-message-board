@@ -1,4 +1,5 @@
 const getDb = require('../db');
+const ObjectId = require('mongodb').ObjectId;
 
 function getThreads(req, res, next) {
     getDb.then(function(db) {
@@ -64,19 +65,19 @@ function deleteThreads(req, res, next) {
     /* I can delete a thread completely if I send a DELETE request to /api/threads/{board} and pass along the threadid_ & deletepassword_. (Text response will be 'incorrect password' or 'success') */
 
     const board = req.params.board;
-    const threadId = req.query.threadid_;
-    const password = req.query.deletepassword_;
+    const { threadid_, deletepassword_ } = req.query;
 
-    console.log(`DELETE threads... board is ${board}, threadis_ is ${threadId} and deletepassword_ is ${req.query.deletepassword_}`);
+    console.log(`DELETE threads... board is ${board}, threadis_ is ${threadid_} and deletepassword_ is ${deletepassword_}`);
 
     getDb.then(function(db) {
         console.log(`Made it here...`)
-        db.collection(board).findOne({id: threadId}, function(err, result) {
+        db.collection(board).findOne({_id: threadid_}, function(err, result) {
             if (err) {
                 console.log(`Error finding document: ${err}`);
             }
             
-            console.log(`password is ${result.deletepassword_}`);
+            console.log(`result is ${result}`);
+            //console.log(`password is ${result.deletepassword_}`);
 
             if (result.deletepassword_ === password) {
                 //implement db.collection(board).delete...
