@@ -111,6 +111,7 @@ suite('Functional Tests', function() {
             .delete(`/api/threads/${testBoard}?threadid_=${id}&deletepassword_=wrongpassword`)
             .end(function(err, res) {
               assert.equal(res.status, 200, 'response status should be 200');
+              console.log(`res.body is ${JSON.stringify(res.body)}`);
               assert.equal(res.body, 'incorrect password', 'The response text should be incorrect password');
               done();
             })
@@ -118,15 +119,16 @@ suite('Functional Tests', function() {
         })
       })
 
-      // test('DELETE an entire thread, given a threadid_ and deletepassword_, passed to /api/threads', function(done) {
-      //   chai.request(server)
-      //   .delete(`/api/threads/${testBoard}?threadid_=${id}&deletepassword_=${deletePassword}`)
-      //   .end(function(err, res) {
-      //     assert.equal(res.status, 200, 'response status should be 200');
-      //     assert.equal(res.body, 'success', 'The response text should be success');
-      //     done();
-      //   })
-      // })
+      test('DELETE an entire thread, given a threadid_ and deletepassword_, passed to /api/threads', function(done) {
+        chai.request(server)
+        .delete(`/api/threads/${testBoard}?threadid_=${id}&deletepassword_=${deletePassword}`)
+        .end(function(err, res) {
+          assert.equal(res.status, 200, 'response status should be 200');
+          console.log(`res.body is ${JSON.stringify(res.body)}`);
+          assert.equal(res.body, 'success', 'The response text should be success');
+          done();
+        })
+      })
     });
     
     // suite('PUT', function() {
