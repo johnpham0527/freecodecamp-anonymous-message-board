@@ -131,29 +131,29 @@ suite('Functional Tests', function() {
       })
     });
     
-    // suite('PUT', function() {
-    //   /* I can report a thread and change its reported value to true by sending a PUT request to /api/threads/{board} and pass along the threadid_. (Text response will be 'success') */
-    //   let id;
+    suite('PUT', function() {
+      /* I can report a thread and change its reported value to true by sending a PUT request to /api/threads/{board} and pass along the threadid_. (Text response will be 'success') */
+      let id;
 
-    //   test('PUT report status to true, given a threadid_, passed to /api/threads/{board}', function(done) {
-    //     getDb.then(function(db) {
-    //       db.collection(testBoard).insertOne(testData3, function(err, res) {
-    //         if (err) {
-    //           console.log(`Error inserting document: ${err}`);
-    //         }
-    //         id = res.insertedId;
+      test('PUT report status to true, given a threadid_, passed to /api/threads/{board}', function(done) {
+        getDb.then(function(db) {
+          db.collection(testBoard).insertOne(testData3, function(err, res) {
+            if (err) {
+              console.log(`Error inserting document: ${err}`);
+            }
+            id = res.insertedId;
 
-    //         chai.request(server)
-    //         .put(`/api/threads/${testBoard}?threadid_=${id}`)
-    //         .end(function(err, res) {
-    //           assert.equal(res.status, 200, 'response status should be 200');
-    //           assert.equal(res.body, 'success', 'The response text should be success');
-    //           done();
-    //         })
-    //       })
-    //     })
-    //   })
-    // });
+            chai.request(server)
+            .put(`/api/threads/${testBoard}?threadid_=${id}`)
+            .end(function(err, res) {
+              assert.equal(res.status, 200, 'response status should be 200');
+              assert.equal(res.body, 'success', 'The response text should be success');
+              done();
+            })
+          })
+        })
+      })
+    });
   });
   
   // suite('API ROUTING FOR /api/replies/:board', function() {
