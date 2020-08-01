@@ -61,6 +61,10 @@ function putThreads(req, res, next) {
     /* I can report a thread and change its reported value to true by sending a PUT request to /api/threads/{board} and pass along the threadid_. (Text response will be 'success') */
 
     const { threadid_ } = req.query;
+    getDb.then(function(db) {
+    
+    });
+
 
     console.log(`PUT threads... threadid_ is ${threadid_}`);
 }
