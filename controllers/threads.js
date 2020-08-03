@@ -63,7 +63,7 @@ const board = req.params.board;
 
     const { threadid_ } = req.query;
     getDb.then(function(db) {
-    //
+    //db.collection(board).findOneAndUpdate...
     });
 
 
