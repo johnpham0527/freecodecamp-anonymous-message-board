@@ -64,7 +64,7 @@ function putThreads(req, res, next) {
 
     console.log(`The thread id is ${threadid_}`);
     getDb.then(function(db) {
-        db.collection(board).findOneAndUpdate({ _id: ObjectId(threadid_)}, { reported: true }, { new: true },  function(err, result) {
+        db.collection(board).findOneAndUpdate({ _id: ObjectId(threadid_)}, { $set: { reported: true } }, { new: true },  function(err, result) {
             if (err) {
                 console.log(`Error executing find and modify: ${err}`);
             }
