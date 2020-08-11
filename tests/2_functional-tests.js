@@ -177,6 +177,7 @@ suite('Functional Tests', function() {
 
   //           chai.request(server)
   //           .post(`/api/replies/${testBoard}`)
+  //           .send(testComment) 
   //           .end(function(err, res) {
   //             assert.equal(res.status, 200, 'response status should be 200'); //the page should redirect to /b/{board}/{thread_id}, so it's not possible to check the database unless I do integration testing
   //           })
