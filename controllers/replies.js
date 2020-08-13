@@ -3,7 +3,13 @@ const getDb = require('../db');
 function getReplies(req, res, next) {
     console.log(`Get replies...`)
 
-//getDb.then(function(db) {}) 
+/*
+const { threadid_ } =... 
+
+getDb.then(function(db) {
+ 
+}) 
+*/
 
 /*
 Find a thread... 
