@@ -4,7 +4,7 @@ function getReplies(req, res, next) {
     console.log(`Get replies...`)
 
 /*
-const { threadid_ } =... 
+const { threadid_, board} = req.params;
 
 getDb.then(function(db) {
  
