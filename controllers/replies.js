@@ -1,4 +1,5 @@
 const getDb = require('../db');
+const ObjectId = require('mongodb'). ObjectId;
 
 function getReplies(req, res, next) {
     console.log(`Get replies...`)
@@ -7,12 +8,8 @@ function getReplies(req, res, next) {
 const { threadid_, board} = req.params;
 
 getDb.then(function(db) {
- 
+ let thread = db.collection(board).find(... {}) 
 }) 
-*/
-
-/*
-Find a thread... 
 */
 /*
 I can GET an entire thread with all its 
