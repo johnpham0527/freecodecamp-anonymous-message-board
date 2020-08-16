@@ -8,7 +8,7 @@ function getReplies(req, res, next) {
 const { threadid_, board} = req.params;
 
 getDb.then(function(db) {
- let thread = db.collection(board).find(... {}) 
+ let thread = db.collection(board).find(ObjectId(threadid_)) 
 }) 
 */
 /*
