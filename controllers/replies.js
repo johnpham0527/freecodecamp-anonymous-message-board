@@ -8,7 +8,15 @@ function getReplies(req, res, next) {
 const { threadid_, board} = req.params;
 
 getDb.then(function(db) {
- let thread = db.collection(board).find(ObjectId(threadid_)) 
+ let thread = db.collection(board).find(ObjectId(threadid_));
+ let replies = thread.replies.map(reply => {
+   return ({
+     text: text,
+     createdon_: now,
+     bumpedon_: now,
+   });
+ });
+  return res.json(replies);
 }) 
 */
 /*
