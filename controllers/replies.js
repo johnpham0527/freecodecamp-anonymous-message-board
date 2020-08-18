@@ -5,15 +5,17 @@ function getReplies(req, res, next) {
     console.log(`Get replies...`)
 
 /*
-const { threadid_, board} = req.params;
+const { board } = req.params;
+const threadid_ = req.query.thread_id;
 
 getDb.then(function(db) {
  let thread = db.collection(board).find(ObjectId(threadid_));
  let replies = thread.replies.map(reply => {
+   const now = new Date();
    return ({
-     text: text,
-     createdon_: now,
-     bumpedon_: now,
+     text: reply.text,
+     createdon_: reply.now,
+     bumpedon_: reply.now
    });
  });
   return res.json(replies);
@@ -29,7 +31,7 @@ Also hiding the same fields the client should be see.
 function putReplies(req, res, next) {
     console.log(`PUT replies...`)
 /*
-Find a thread... 
+ I can report a reply and change its reported value to true by sending a PUT request to /api/replies/{board} and pass along the threadid_ & replyid_. (Text response will be 'success')
 */
 
 }
