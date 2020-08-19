@@ -31,6 +31,10 @@ Also hiding the same fields the client should be see.
 function putReplies(req, res, next) {
     console.log(`PUT replies...`)
 /*
+const { board } = req.params;
+const { threadid_, replyid_ } = req.query;
+*/
+/*
  I can report a reply and change its reported value to true by sending a PUT request to /api/replies/{board} and pass along the threadid_ & replyid_. (Text response will be 'success')
 */
 
