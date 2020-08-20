@@ -11,11 +11,10 @@ const threadid_ = req.query.thread_id;
 getDb.then(function(db) {
  let thread = db.collection(board).find(ObjectId(threadid_));
  let replies = thread.replies.map(reply => {
-   const now = new Date();
    return ({
      text: reply.text,
-     createdon_: reply.now,
-     bumpedon_: reply.now
+     createdon_: reply.createdon_,
+     bumpedon_: reply.bumpedon_
    });
  });
   return res.json(replies);
@@ -33,6 +32,10 @@ function putReplies(req, res, next) {
 /*
 const { board } = req.params;
 const { threadid_, replyid_ } = req.query;
+
+getDb.then(function(db) {
+  db.collection(board).findOneAndUpdate()
+}) 
 */
 /*
  I can report a reply and change its reported value to true by sending a PUT request to /api/replies/{board} and pass along the threadid_ & replyid_. (Text response will be 'success')
