@@ -34,7 +34,9 @@ const { board } = req.params;
 const { threadid_, replyid_ } = req.query;
 
 getDb.then(function(db) {
-  db.collection(board).findOneAndUpdate()
+  db.collection(board).findOneAndUpdate(
+  ObjectId(threadid_) 
+  )
 }) 
 */
 /*
