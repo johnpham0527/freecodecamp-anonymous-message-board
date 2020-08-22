@@ -34,9 +34,17 @@ const { board } = req.params;
 const { threadid_, replyid_ } = req.query;
 
 getDb.then(function(db) {
-  db.collection(board).findOneAndUpdate(
-  ObjectId(threadid_) 
-  )
+  let thread = db.collection(board).find(ObjectId(threadid_));
+  if (thread === null) {
+  } 
+  else {
+    let replies = thread.replies;
+    /*
+     filter and map replies: if match, update reported
+     db.collection(board).findOneAndUpdate(
+     )
+    */
+  } 
 }) 
 */
 /*
