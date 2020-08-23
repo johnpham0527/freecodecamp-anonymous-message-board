@@ -55,6 +55,8 @@ getDb.then(function(db) {
 
 function postReplies(req, res, next) {
     console.log(`POST replies...`)
+const { board } = req.params;
+const { threadid_, text, deletepassword_} = req.query;
     /*
        I can POST a reply to a thread on a specific board by passing form data text, deletepassword_, & threadid_ to /api/replies/{board} and it will also update the bumped_on date to the comments date.
        (Recommend res.redirect to thread page /b/{board}/{thread_id})
