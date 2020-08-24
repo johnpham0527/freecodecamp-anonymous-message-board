@@ -71,6 +71,10 @@ res.redirect to board and thread page
 
 function deleteReplies(req, res, next) {
     console.log(`DELETE replies...`)
+const { board } = req.params;
+const { threadid_, text, deletepassword_} = req.query;
+
+
 /*
 Find thread
 Edit thread to modify the text data 
