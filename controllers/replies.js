@@ -8,8 +8,8 @@ function getReplies(req, res, next) {
 const { board } = req.params;
 const threadid_ = req.query.thread_id;
 
-getDb.then(function(db) {
- let thread = db.collection(board).find(ObjectId(threadid_));
+getDb.then(async function(db) {
+ let thread = await db.collection(board).find(ObjectId(threadid_));
  let replies = thread.replies.map(reply => {
    return ({
      text: reply.text,
@@ -33,8 +33,8 @@ function putReplies(req, res, next) {
 const { board } = req.params;
 const { threadid_, replyid_ } = req.query;
 
-getDb.then(function(db) {
-  let thread = db.collection(board).find(ObjectId(threadid_));
+getDb.then(async function(db) {
+  let thread = await db.collection(board).find(ObjectId(threadid_));
   if (thread === null) {
   } 
   else {
@@ -63,7 +63,8 @@ const { threadid_, text, deletepassword_} = req.query;
        In the thread's replies array will be saved _id, text, createdon_, deletepassword_, & reported.
     */
 
-getDb.then(function(db) {
+getDb.then(async function(db) {
+
 }) 
 /*
 Find thread
