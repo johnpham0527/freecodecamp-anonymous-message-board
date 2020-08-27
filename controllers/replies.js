@@ -78,7 +78,9 @@ function deleteReplies(req, res, next) {
 const { board } = req.params;
 const { threadid_, text, deletepassword_} = req.query;
 
+getDb.then(async function(db) {
 
+}) 
 /*
 Find thread
 Edit thread to modify the text data 
