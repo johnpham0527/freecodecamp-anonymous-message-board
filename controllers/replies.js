@@ -79,13 +79,11 @@ const { board } = req.params;
 const { threadid_, text, deletepassword_} = req.query;
 
 getDb.then(async function(db) {
-
+  let thread = await db.collection(board).find(ObjectId(threadid_);
+  //filter and map thread
+  //during mapping, check password (I should implement encryption) 
+  //if passwords match, then map empty element
 }) 
-/*
-Find thread
-Edit thread to modify the text data 
-What else? 
-*/
 }
 
 module.exports = { getReplies, putReplies, postReplies, deleteReplies };
