@@ -63,9 +63,10 @@ const { threadid_, text, deletepassword_} = req.query;
        In the thread's replies array will be saved _id, text, createdon_, deletepassword_, & reported.
     */
 
-getDb.then(async function(db) {
+  getDb.then(async function(db) {
+    let thread = db.collection.find(ObjectId(threadid_));
 
-}) 
+  }) 
 /*
 Find thread
 Push new data into array: password (encrypted), text data, created on, reported
