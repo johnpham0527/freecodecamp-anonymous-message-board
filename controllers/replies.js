@@ -31,7 +31,7 @@ function putReplies(req, res, next) {
     console.log(`PUT replies...`)
 /*
 const { board } = req.params;
-const { threadid_, replyid_ } = req.query;
+const { threadid_, _id } = req.query;
 
 getDb.then(async function(db) {
   let thread = await db.collection(board).find(ObjectId(threadid_));
