@@ -65,6 +65,7 @@ const { threadid_, text, deletepassword_} = req.query;
 
   getDb.then(async function(db) {
     let thread = db.collection.find(ObjectId(threadid_));
+let replies = thread.replies;
 
   }) 
 /*
