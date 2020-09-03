@@ -39,6 +39,7 @@ getDb.then(async function(db) {
   } 
   else {
     let replies = thread.replies;
+
     /*
      filter and map replies: if match, update reported
      db.collection(board).findOneAndUpdate(
@@ -83,6 +84,9 @@ const { threadid_, text, deletepassword_} = req.query;
 getDb.then(async function(db) {
   let thread = await db.collection(board).find(ObjectId(threadid_);
 let replies = thread.replies;
+let newReplies = replies.map(element => {
+
+});
   //filter and map thread
   //during mapping, check password (I should implement encryption) 
   //if passwords match, then map empty element
