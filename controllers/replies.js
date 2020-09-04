@@ -38,7 +38,9 @@ getDb.then(async function(db) {
   if (thread === null) {
   } 
   else {
-    let replies = thread.replies;
+    let replies = thread.replies.map(element => {
+
+} );
 
     /*
      filter and map replies: if match, update reported
