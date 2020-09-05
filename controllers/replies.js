@@ -67,8 +67,17 @@ const { threadid_, text, deletepassword_} = req.query;
     */
 
   getDb.then(async function(db) {
-    let thread = db.collection.find(ObjectId(threadid_));
-let replies = thread.replies;
+    let thread = db.collection(board).find(ObjectId(threadid_));
+thread.replies.push({
+_id: ObjectId()
+text: text, 
+createdon_: Date(), 
+deletepassword_: deletepassword_, 
+reported: false
+});
+
+//update DB with new replies and bumped
+//return
 
   }) 
 /*
