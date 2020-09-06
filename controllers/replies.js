@@ -39,7 +39,10 @@ getDb.then(async function(db) {
   } 
   else {
     let replies = thread.replies.map(element => {
-
+      if (element._id === ObjectId(_id)) {
+        element.reported = true;
+        
+      } 
 } );
 
     /*
