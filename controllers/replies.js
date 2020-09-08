@@ -45,7 +45,8 @@ getDb.then(async function(db) {
       return element;
     } );
 
-    
+    db.collection(board).findOneAndUpdate(
+     );
 
     /*
      filter and map replies: if match, update reported
