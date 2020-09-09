@@ -46,6 +46,11 @@ getDb.then(async function(db) {
     } );
 
     db.collection(board).findOneAndUpdate(
+      ObjectId(threadid_), 
+      {$set: {replies: replies}}, 
+      {upsert: true}, 
+      function(err, result) {
+      } 
      );
 
     /*
