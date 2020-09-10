@@ -50,14 +50,15 @@ getDb.then(async function(db) {
       {$set: {replies: replies}}, 
       {upsert: true}, 
       function(err, result) {
+        if (err) {
+          console.log(err);
+        } 
+        else {
+          return res.json('success');
+        } 
+        return res.json('error');
       } 
      );
-
-    /*
-     filter and map replies: if match, update reported
-     db.collection(board).findOneAndUpdate(
-     )
-    */
   } 
 }) 
 */
