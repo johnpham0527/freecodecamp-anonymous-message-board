@@ -88,6 +88,8 @@ deletepassword_: deletepassword_,
 reported: false
 });
 
+  db.collection(board).findOneAndUpdate(
+);
 //update DB with new replies and bumped
 //return
 
