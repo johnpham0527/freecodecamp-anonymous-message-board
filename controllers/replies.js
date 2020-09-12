@@ -89,6 +89,10 @@ reported: false
 });
 
   db.collection(board).findOneAndUpdate(
+  {ObjectId(threadid_)}, 
+  {}, 
+  function(err,result) {
+  } 
 );
 //update DB with new replies and bumped
 //return
