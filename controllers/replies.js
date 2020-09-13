@@ -90,7 +90,7 @@ reported: false
 
   db.collection(board).findOneAndUpdate(
   {ObjectId(threadid_)}, 
-  {}, 
+  {$set: {replies: replies}} , 
   function(err,result) {
   } 
 );
