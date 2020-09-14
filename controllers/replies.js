@@ -114,6 +114,8 @@ getDb.then(async function(db) {
   let thread = await db.collection(board).find(ObjectId(threadid_);
 let replies = thread.replies;
 let newReplies = replies.map(element => {
+  if () {
+  } 
 
 });
   //filter and map thread
