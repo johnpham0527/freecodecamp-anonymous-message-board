@@ -79,14 +79,19 @@ const { threadid_, text, deletepassword_} = req.query;
     */
 
   getDb.then(async function(db) {
-    let thread = db.collection(board).find(ObjectId(threadid_));
-thread.replies.push({
-_id: ObjectId()
-text: text, 
-createdon_: Date(), 
-deletepassword_: deletepassword_, 
-reported: false
-});
+    let thread = db.collection(board).find(ObjectId(threadid_), function(err, result){
+      if (err) {
+      } 
+      else {
+      } 
+    } );
+    thread.replies.push({
+      _id: ObjectId()
+      text: text, 
+      createdon_: Date(), 
+      deletepassword_: deletepassword_, 
+      reported: false
+     });
 
   db.collection(board).findOneAndUpdate(
   {ObjectId(threadid_)}, 
