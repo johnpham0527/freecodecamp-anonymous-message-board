@@ -81,6 +81,7 @@ const { threadid_, text, deletepassword_} = req.query;
   getDb.then(async function(db) {
     let thread = db.collection(board).find(ObjectId(threadid_), function(err, result){
       if (err) {
+          console.log(err);
       } 
       else {
       } 
@@ -95,8 +96,12 @@ const { threadid_, text, deletepassword_} = req.query;
 
   db.collection(board).findOneAndUpdate(
   {ObjectId(threadid_)}, 
-  {$set: {replies: replies}} , 
+  {$set: {replies: replies, 
+          bumpedon_: Date() 
+          }
+   } , 
   function(err,result) {
+
   } 
 );
 //update DB with new replies and bumped
