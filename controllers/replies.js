@@ -97,11 +97,14 @@ const { threadid_, text, deletepassword_} = req.query;
   db.collection(board).findOneAndUpdate(
   {ObjectId(threadid_)}, 
   {$set: {replies: replies, 
-          bumpedon_: Date() 
+           bumpedon_: Date()
           }
    } , 
   function(err,result) {
-
+    if (err) {
+      console.log(err);
+    } 
+    //return res.direct();
   } 
 );
 //update DB with new replies and bumped
