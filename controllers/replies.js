@@ -104,12 +104,9 @@ const { threadid_, text, deletepassword_} = req.query;
     if (err) {
       console.log(err);
     } 
-    //return res.direct();
+    return res.direct(`/b/{$board}/{$threadid_`});
   } 
-);
-//update DB with new replies and bumped
-//return
-
+)
   }) 
 /*
 Find thread
